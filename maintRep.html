@@ -14,9 +14,15 @@
 	}
 	  
 	 h3{padding-left: 5%;}
-form{
+	
+	 form{
 		background-image: url("skyback.gif");
 		background-repeat: no-repeat;
+	}
+
+	#repdiv{
+		background-color: #C2B280;
+		max-width: 720px;
 	}
 	 
 	 </style>
@@ -41,20 +47,6 @@ form{
 </form>
 <p id="repdiv"></p>
 
-<!--
-	I was trying to write a function that printed out an array of strings plus
-	the int values from the form. I was trying to get it to output into the paragraph below,
-	but I couldn't get that to work. So I went with the document write function to output 
-	on a new page. At first I couldn't get it to display the string and int on the same line,
-	so I wrote the outputs in two separate functions and it started working. 
-
-	Later I got rid of the document write and started using innerHTML.
-
-	Another issue I had was getting it to pull the int value from the form and assign it to 
-	the variables I declared, but then I realized I assigned the ID to the label instead of 
-	the input.
--->
-
 <script>
 	let low, high, ampsin, returntemp, supplytemp, ampsout;
 	
@@ -67,29 +59,17 @@ form{
 		low = document.getElementById("low").value;
 		high = document.getElementById("high").value;
 		ampsout = document.getElementById("ampsout").value;
-
-		//backticks allow string interpolation for better looking array
-
-		const amparr = [`Indoor amps are ${ampsin} amp(s). `];
-		const rtemparr = [`Return temp is ${returntemp}. `];
-		const stemparr = [`supply temp is ${supplytemp}. `];
-		const tempsparr = [`The temp split is ${tempsplit}. `];
-		const lowarr = [`Low side pressure is ${low}. `];
-		const hiarr = [`High side pressure is ${high}. `];
-		const outamps = [`Outdoor amps are ${ampsout}. `];
 		
+		// can't figure out how to add line spacing. \n breaks code. **solution to line spacing: add html tags **
 
-		// can't figure out how to add line spacing. \n breaks code.
-
-		const marray = [amparr, rtemparr, stemparr, tempsparr, lowarr, hiarr, outamps];
-
-		/*
-		getting two commas in output. 
-		might try array within array to interpolate string and var
-		(issue resolved after using backticks)
-		*/
-
-		 // the user input displays the way I intend if I put all of it as an array
+		let marray = 
+		`Indoor amps are ${ampsin} amp(s). <br>
+		Return temp is ${returntemp}. <br>
+		supply temp is ${supplytemp}. <br>
+		The temp split is ${tempsplit}. <br>
+		Low side pressure is ${low}. <br>
+		High side pressure is ${high}. <br>
+		Outdoor amps are ${ampsout}.<br>`;
 
 		document.getElementById("repdiv").innerHTML= marray;
 
